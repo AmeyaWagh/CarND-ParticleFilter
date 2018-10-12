@@ -142,7 +142,8 @@ ParticleFilter::updateWeights(double sensor_range, double std_landmark[],
     {
         //find all landmarks that are within range
         std::vector<LandmarkObs> landmarks_in_range;
-        landmarksWithinRange(landmarks_in_range,map_landmarks,
+        landmarksWithinRange(landmarks_in_range,
+                             map_landmarks,
                              sensor_range_sqrd,p);
 
         if (landmarks_in_range.size() > 0)
@@ -168,7 +169,8 @@ ParticleFilter::updateWeights(double sensor_range, double std_landmark[],
 
             // update particle weight
             p.weight = getUpdatedWeight(observations_map,
-                                                   map_landmarks,std_landmark);
+                                        map_landmarks,
+                                        std_landmark);
         }
         else
         {
