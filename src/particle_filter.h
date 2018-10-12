@@ -29,9 +29,7 @@ class ParticleFilter {
 	
 	// Number of particles to draw
 	int num_particles; 
-	
-	
-	
+
 	// Flag, if filter is initialized
 	bool is_initialized;
 	
@@ -115,6 +113,17 @@ public:
 	const bool initialized() const {
 		return is_initialized;
 	}
+
+    void landmarksWithinRange(std::vector<LandmarkObs> &landmarks_in_range,
+                              const Map &map_landmarks,
+                              double sensor_range_sqrd,
+                              Particle &p);
+
+    double getUpdatedWeight(std::vector<LandmarkObs>    &observations_map,
+                            const Map &map_landmarks,
+                            double std_landmark[]);
+
+    void updateWeightsVector();
 };
 
 
